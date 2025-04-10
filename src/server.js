@@ -1,9 +1,15 @@
-import express from "express";
-import tarefaRoutes from "./routes/tarefaRoutes.js";
+const express = require('express');
+const courseRoutes = require('./routes/courseRoutes');
+
 const app = express();
-const port = 4000;
+
+// Middleware para interpretar JSON
 app.use(express.json());
-app.use("/tarefas", tarefaRoutes);
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
+
+// Usar as rotas da API
+app.use('/api', courseRoutes);
+
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Estamos di pé 🙌 ${PORT}`);
 });
