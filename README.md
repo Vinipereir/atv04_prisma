@@ -1,3 +1,12 @@
+### Instruções de instalação e execução
+
+git clone <URL_DO_REPOSITORIO>
+cd <NOME_DO_REPOSITORIO>
+npm install
+npx prisma migrate dev
+npm run dev
+
+
 ### Antes de começar, certifique-se de ter os seguintes itens instalados:
 
 - **Node.js**: Versão LTS mais recente (recomendado)

@@ -10,15 +10,18 @@ const getAllCourses = async (req, res) => {
 };
 
 const getCourseById = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const course = await prisma.course.findUnique({ where: { id: parseInt(id) } });
-    if (!course) return res.status(404).json({ error: 'Curso não encontrado.' });
-    res.json(course);
-  } catch (error) {
-    res.status(500).json({ error: 'Erro ao buscar curso.' });
-  }
-};
+    const { id } = req.params;
+    try {
+      const course = await prisma.course.findUnique({ where: { id: parseInt(id) } });
+      if (!course) {
+        return res.status(404).json({ error: 'Curso não encontrado.' });
+      }
+      res.json(course);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Erro ao buscar curso.' });
+    }
+  };
 
 const createCourse = async (req, res) => {
   const { title, instrument, level, duration, price, instructor, maxStudents } = req.body;
